@@ -37,9 +37,9 @@ class OpenArmReachEnvCfg(ReachEnvCfg):
 
         self.scene.robot = OPEN_ARM_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
 
-        self.rewards.end_effector_position_tracking.params["asset_cfg"].body_names = ["link8"]
-        self.rewards.end_effector_position_tracking_fine_grained.params["asset_cfg"].body_names = ["link8"]
-        self.rewards.end_effector_orientation_tracking.params["asset_cfg"].body_names = ["link8"]
+        self.rewards.end_effector_position_tracking.params["asset_cfg"].body_names = ["griper_center"] 
+        self.rewards.end_effector_position_tracking_fine_grained.params["asset_cfg"].body_names = ["griper_center"]
+        self.rewards.end_effector_orientation_tracking.params["asset_cfg"].body_names = ["griper_center"]
 
         self.actions.arm_action = mdp.JointPositionActionCfg(
             asset_name="robot", 
@@ -51,17 +51,17 @@ class OpenArmReachEnvCfg(ReachEnvCfg):
                 "rev5",
                 "rev6",
                 "rev7"], 
-            scale=0.1, 
+            scale = 0.5,
             use_default_offset=True
         )
         
-        self.commands.ee_pose.body_name = "link8"
+        self.commands.ee_pose.body_name = "griper_center"
         # self.commands.ee_pose.ranges.pitch = (math.pi, math.pi)
         self.commands.ee_pose.ranges.pos_x = (0.15, 0.35)
-        self.commands.ee_pose.ranges.pos_z = (0.15, 0.35)
-        self.commands.ee_pose.ranges.roll = (0,0)#(-math.pi/2, math.pi/2)  # (0, 0)
-        self.commands.ee_pose.ranges.pitch = (-math.pi/2,-math.pi/2)#(-math.pi/2, math.pi/2) # (0, 0)
-        self.commands.ee_pose.ranges.yaw = (math.pi, math.pi)# (math.pi/2, 3*math.pi/2)  # (math.pi, math.pi)
+        self.commands.ee_pose.ranges.pos_z = (0.25, 0.35)
+        self.commands.ee_pose.ranges.roll = (math.pi/2, math.pi/2)
+        self.commands.ee_pose.ranges.pitch = (-math.pi/2, math.pi/2)
+        self.commands.ee_pose.ranges.yaw = (math.pi/2, math.pi/2)# (math.pi/2, 3*math.pi/2)  # (math.pi, math.pi)(math.pi, math.pi)
 
 @configclass
 class OpenArmReachEnvCfg_PLAY(OpenArmReachEnvCfg):
