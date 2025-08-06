@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This repository is archived. We'll continue on https://github.com/enactic/openarm_isaac_lab .
+
 ## Installation Guide
 ### ① Install ISAAC SIM and ISAAC LAB
 The required version of ISAAC SIM is 4.5.0.
